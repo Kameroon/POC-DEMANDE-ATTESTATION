@@ -1,0 +1,63 @@
+﻿@model IEnumerable<POC_DEMANDE_ATTESTATION.Models.DemandeAttestation>
+<div class="card-header">
+    <h2>Toutes les demandes</h2>
+</div>
+<br />
+<a href="@Url.Action("Create","DemandeAttestation")" class="btn btn-outline-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="nouvelle demande"> <i class="fa fas fa-plus-square"></i></a>
+<br />
+<br />
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Type</th>
+            <th scope="col">Date</th>
+            <th scope="col">Statut</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="table-secondary">
+
+            <td>Attestation de Travail</td>
+            <td>01/01/2019</td>
+            <td><span class="badge badge-primary">En attente</span></td>
+            <td>
+                <a href="@Url.Action("Details","DemandeAttestation",new {id=0 })" class="btn btn-outline-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="consulter"> <i class="fa fas fa-info-circle"></i></a>
+                <a href="@Url.Action("Edit","DemandeAttestation",new {id=0 })" class="btn btn-outline-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="modifier demande"> <i class="fa fas fa-edit"></i></a>
+                <button type="button" data-toggle="modal" data-target="#example-model" class="btn btn-outline-danger"><i class="fa far fa-window-close" data-toggle="tooltip" data-placement="top" title="" data-original-title="Annuler demande"></i></button>
+
+            </td>
+        </tr>
+        <tr class="table-light">
+
+            <td>Attestation de Travail</td>
+            <td>01/02/2019</td>
+            <td><span class="badge badge-success">Validée</span></td>
+            <td>
+                <a href="@Url.Action("Details","DemandeAttestation",new {id=0 })" class="btn btn-outline-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="consulter"> <i class="fa fas fa-info-circle"></i></a>
+            </td>
+        </tr>
+        <tr class="table-secondary">
+
+            <td>Attestation de Travail</td>
+            <td>01/03/2019</td>
+            <td><span class="badge badge-danger">Refusée</span></td>
+            <td>
+                <a href="@Url.Action("Details","DemandeAttestation",new {id=0 })" class="btn btn-outline-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="consulter"> <i class="fa fas fa-info-circle"></i></a>
+                <button type="button" data-toggle="modal" data-target="#example-model" class="btn btn-outline-danger"><i class="fa fas fa-trash" data-toggle="tooltip" data-placement="top" title="" data-original-title="Annuler demande"></i></button>
+            </td>
+        </tr>
+        <tr class="table-light">
+
+            <td>Attestation de Travail</td>
+            <td>01/04/2019</td>
+            <td><span class="badge badge-danger">Annulée</span></td>
+            <td>
+                <a href="@Url.Action("Details","DemandeAttestation",new {id=0 })" class="btn btn-outline-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="consulter"> <i class="fa fas fa-info-circle"></i></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+

@@ -1,0 +1,310 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>maquette poc Demande Attestation de travail</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="~/Content/cerulean/bootstrap.css" media="screen">
+        <link rel="stylesheet" href="~/Content/custom.min.css">
+        <link rel="stylesheet" href="~/Content/Site.css">
+        <link rel="stylesheet" href="~/Content/nav.css">
+        <link rel="stylesheet" href="~/Content/cerulean/bootstrap-datepicker3.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+
+    @*@Styles.Render("~/bundles/css")
+    @Scripts.Render("~/bundles/modernizr")*@
+</head>
+<body>
+    <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+        <div class="container">
+            <div class="logo-panel ">
+                <div class="pull-left image">
+                    <img src="~/Images/logo-afersys.png" class="img-fluid" alt="User Image">
+                </div>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+
+                <ul class="navbar-nav"></ul>
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <div class="user-panel" style="padding-left:0;">
+
+                            <div class="pull-left image">
+                                <img src="~/Images/profile.png" class="img-circle" alt="User Image">
+                            </div>
+                            <div class="pull-left info">
+                                <p>User</p>
+
+                            </div>
+                        </div>
+
+                    </li>
+                    <li class="nav-item dropdown pull-left info" style="padding:8px 0 0 3px">
+
+                        <a class=" dropdown-toggle" data-toggle="dropdown" href="#" id="download"><span class="navbar-toggler-icon"></span></a>
+                        <div class="dropdown-menu" aria-labelledby="download">
+                            <a class="dropdown-item" target="_blank" href="#">Employé</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" download>changer mot de passe</a>
+                            <a class="dropdown-item" href="#../4/cerulean/bootstrap.css" download>Deconnexion</a>
+                            <div class="dropdown-divider"></div>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="workSpace scrollable">
+        <div class="row">
+            <div class=" horizontalBar ">
+
+                <ul class="nav navbar-nav side-nav">
+                    <li class="header">AferSuivi</li>
+
+                    <li>
+                        <a href="#" data-toggle="collapse" data-target="#submenu-2"> Demande de document <i class="fa fas fa-angle-double-down"></i></a>
+                        <ul id="submenu-2" class="bg-light collapse show">
+                            <li><a href="@Url.Action("Index","DemandeAttestation")"><i class="fa fa-angle-double-right"></i> Demande Attestation de Travail</a></li>
+                            <li><a href="@Url.Action("Index","ValidationDemandeAttestation")"><i class="fa fa-angle-double-right"></i> Validation Demande Attestation de Travail</a></li>
+                        </ul>
+                    </li>
+                    <li class="header">AferLife</li>
+                </ul>
+
+            </div>
+            <div class="container WorkArea ">
+                <div class="page-header" id="banner">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">
+                                @Session["Menu1"] <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#">
+                                @Session["Menu2"]
+
+                            </a>
+                        </li>
+
+                    </ol>
+                </div>
+                <div class="bodySpace ">
+                    @RenderBody()
+                </div>
+
+
+            </div>
+        </div>
+        <footer id="footer">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-unstyled">
+                        <li class="float-lg-right"><a href="#top">Back to top</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+
+    </div>
+    <div class="modal fade" id="example-model" tabindex="-1" role="dialog" aria-labelledby="example-model" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Annulation Demande Attestation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="exampleTextarea" class="col-sm-3 control-label">Motif Rejet</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-primary">Enregistrer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Registration done Successfully</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"
+                            href="@Url.Action("AllNewRequest","ValidationDemandeAttestation")">
+                        Close
+                    </button>
+                    <a href="@Url.Action("AllNewRequest","ValidationDemandeAttestation")" id="btnShowPopup"
+                       class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal">
+                        Envoyer
+                    </a>
+                    <button type="button" class="btn btn-primary">
+                        Save changes
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/popper")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/datePicker") 
+    @RenderSection("scripts", required: false)*@
+
+    <script src="~/Scripts/jquery/dist/jquery.min.js"></script>
+        <script src="~/Scripts/popper.js/dist/umd/popper.min.js"></script>
+        <script src="~/Scripts/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="~/Scripts/js/custom.js"></script>
+        <script src="~/Scripts/bootstrap/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+            $('.datepicker').datepicker({
+                format: 'mm/dd/yyyy',
+                startDate: '-3d'
+            });
+
+            $('#example').DataTable({
+                "ajax": {
+                    "datatype": "json",
+                    "contentType": "application/json; charset=utf-8",
+                    "url": '/ValidationDemandeAttestation/GetList',
+                    "dataSrc": ""
+                },
+                "columns": [
+                    { "data": "Date" },
+                    { "data": "NomPrenom" },
+                    { "data": "Objet" },
+                    {
+                        "data": "Statut",
+                        "render": function (row) {
+                            debugger;
+                            if (row.Statut == "Refusée" || row == "Refusée")
+                                return "<span class='badge badge-danger'>Refusée</span>"
+                            else if (row.Statut =="En Attente" || row == "En Attente")
+                                return "<span class='badge badge-light'>En attente</span>"
+                            else
+                                return "<span style='color:green; font-weight:bold'>Validée</span>"
+                        }
+
+                    },
+                    {
+                        "data": "url",
+                        "render": function (data, type, row) {
+                            debugger;
+                            if (row.Statut =="En Attente")
+                                return "<a href='" + row.Controller + "/" + row.Action + "' class='btn btn-outline-warning btn-sm'> Consulter</a><a href='" + row.Controller + "/" + row.Action + "' class='btn btn-outline-warning btn-sm'> Valider</a>";
+                            else if (row.Statut == "Validée")
+                                return "<a href='" + row.Controller + "/" + row.Action + "' class='btn btn-outline-warning btn-sm'> Consulter</a>";
+                            else 
+                                return "<a href='" + row.Controller + "/" + row.Action + "' class='btn btn-outline-warning btn-sm'> Consulter</a>";
+                        }
+                    }
+                ]
+            });
+        });
+
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+@*<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="horizontalBar ">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Cras justo odio
+                        <span class="badge badge-primary badge-pill">14</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Dapibus ac facilisis in
+                        <span class="badge badge-primary badge-pill">2</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Morbi leo risus
+                        <span class="badge badge-primary badge-pill">1</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+
+            </div>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>*@

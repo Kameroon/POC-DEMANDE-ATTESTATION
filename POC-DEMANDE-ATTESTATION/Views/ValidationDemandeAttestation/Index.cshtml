@@ -1,0 +1,103 @@
+﻿@model IEnumerable<POC_DEMANDE_ATTESTATION.Models.DemandeAttestation>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="card-header">
+    <h2>Toutes les demandes</h2>
+</div>
+<br />
+<table id="example" class="display table table-hover" style="width:100%">
+    <thead>
+        <tr>
+            <th scope="col">Date Demande</th>
+            <th scope="col">Nom prénom</th>
+            <th scope="col">Objet</th>
+            <th scope="col">Statut</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+
+</table>
+<br />
+<a href="@Url.Action("AllNewRequest","ValidationDemandeAttestation")" class="btn btn-outline-primary">Nouvelles Demandes</a>
+<a href="@Url.Action("AllValidatedRequest","ValidationDemandeAttestation")" class="btn btn-outline-success">Demandes validées</a>
+<br />
+<br />
+
+<table class="">
+    <thead>
+        <tr></tr>
+    </thead>
+    <tbody>
+        <tr class="table-secondary">
+            <td>17/05/2015</td>
+            <td>Holande Chirac</td>
+            <td>Présidentielles</td>
+            <td>
+                <span class="badge badge-danger">Refusée</span>
+            </td>
+            <td>
+                <a href="@Url.Action("ViewRequest","ValidationDemandeAttestation",new {id=0 })" class="btn btn-outline-warning btn-sm"> Consulter</a>
+            </td>
+        </tr>
+        <tr class="table-light">
+            <td>23/11/2017</td>
+            <td>Nicola De Pinprenaux</td>
+            <td>Municipale</td>
+            <td>
+                <span class="badge badge-light">En attente</span>
+            </td>
+            <td>
+                <a href="@Url.Action("ViewRequest","ValidationDemandeAttestation",new {id=0 })" class="btn btn-outline-warning btn-sm"> Consulter</a>
+            </td>
+        </tr>
+        <tr class="table-secondary">
+            <td>08/09/2018</td>
+            <td>Jean-Patrik Bouche-Trou</td>
+            <td>Réservation</td>
+            <td>
+                <span class="badge badge-light">En attente</span>
+            </td>
+            <td>
+                <a href="@Url.Action("ViewRequest","ValidationDemandeAttestation",new {id=0 })" class="btn btn-outline-warning btn-sm"> Consulter</a>
+            </td>
+        </tr>
+        <tr class="table-light">
+            <td>08/09/2018</td>
+            <td>Adeline Dubois</td>
+            <td>Candidature</td>
+            <td>
+                <span class="badge badge-success">Validée</span>
+            </td>
+            <td>
+                <a href="@Url.Action("ViewRequest","ValidationDemandeAttestation",new {id=0 })" class="btn btn-outline-warning btn-sm"> Consulter</a>
+            </td>
+        </tr>
+        <tr class="table-secondary">
+            <td>18/03/2016</td>
+            <td>Hassan Hasni</td>
+            <td>Achat immobilier</td>
+            <td>
+                <span class="badge badge-light">En attente</span>
+            </td>
+            <td>
+                <a href="@Url.Action("ViewRequest","ValidationDemandeAttestation",new {id=0 })" class="btn btn-outline-warning btn-sm"> Consulter</a>
+            </td>
+        </tr>
+        <tr class="table-light">
+            <td>11/12/2017</td>
+            <td>Marie Dbois-Gueneck</td>
+            <td>Garde d'enfant</td>
+            <td>
+                <span class="badge badge-success">Validée</span>
+            </td>
+            <td>
+                <a href="@Url.Action("ViewRequest","ValidationDemandeAttestation",new {id=0 })" class="btn btn-outline-warning btn-sm"> Consulter</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
